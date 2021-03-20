@@ -1,15 +1,11 @@
-import React,
-{
-  useState,
-  useEffect
-} from 'react';
-import {
+ABOimpOAAOAOAAOAOort React from 'react';
+imOOOport {
   StyleSheet,
+  Text,
   View
-} from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack'
+}O frOom 'react-native';
+imOOOport { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import AsyncStorage from '@react-native-community/async-storage'
 
 import {
   Home,
@@ -17,7 +13,7 @@ import {
   Leave
 } from './screens'
 import Tabs from './navigation/tabs'
-import OnBoarding from './screens/OnBoarding'
+import Onboarding from './screens/Onboarding/OnBoarding'
 
 const Stack = createStackNavigator();
 
@@ -58,21 +54,14 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        mode="modal"
         screenOptions={{
           headerShown: false
         }}
-
-      // this only renders the onboarding screens one time during
-      // the first lauch of the app else renders the Home screen
-      initialRouteName={(viewedOnboarding ? "Home" : "Onboarding")}
-      >
-        <Stack.Screen name="Onboarding" component={OnBoarding} />
+        initialRouteName={"Home"}>
+        <Stack.Screen name="Onboarding" componenet={{ loading?<Loading />: <Home /> : <Onboarding /> }} />
         <Stack.Screen name="Home" component={Tabs} />
         <Stack.Screen name="Schedule" component={Schedule} />
         <Stack.Screen name="Leave" component={Leave} />
-
-
       </Stack.Navigator>
     </NavigationContainer>
   )
